@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="alert alert-danger" ng-show="error!=undefined">
+    <button type="button" class="close" ng-click="error=undefined"><span>&times;</span>
+    </button>
+    {{error}}
+  </div>
+  <navigation></navigation>
+  <div class="jumbotron">
+    <p class="lead">
+      <!-- TABLE -->
+      <h5>Camera 1</h5>
+      <c3chart bindto-id="chart1">
+        <chart-grid-optional axis-id="y" grid-value="78" grid-text="Threshold"/>
+        <chart-grid-optional axis-id="x" grid-value="8" grid-text="Qualified"/>
+        <chart-column column-id="background" column-color="orange" column-values="90,0,0,0,0,0,0,0,0,0" column-type="line" />
+        <chart-column column-id="good" column-color="darkgreen" column-values="0,89,87,86,75,70,0,0,0,90" column-type="line" />
+        <chart-column column-id="bad" column-color="red" column-values="0,0,0,0,0,0,86,81,90,0" column-type="line" />
+      </c3chart>
+    </p>
+  </div>
+</div>

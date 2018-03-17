@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="alert alert-danger" ng-show="error!=undefined">
+    <button type="button" class="close" ng-click="error=undefined"><span>&times;</span>
+    </button>
+    {{error}}
+  </div>
+  <navigation></navigation>
+  <div class="jumbotron">
+    <p class="lead">
+      <!-- TABLE -->
+      <div class="table-responsive">
+        <table class="table table-condensed table-hover compact-table">
+          <thead>
+            <tr>
+              <td ng-repeat="key in keys(events[0]) | filter:'!$$' "> <small><strong>{{key}}</strong></small> </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in events" class="table-danger">
+              <td ng-repeat="key in keys(item)| filter:'!$$'">
+                <div ng-switch on="key">
+                  <small ng-switch-when="Classification" class="bg-success"> {{ item[key] }}</small>
+                  <a ng-switch-when="Image" href="#/image"> <span class="glyphicon glyphicon-camera" aria-hidden="true"></span></a>
+                  <a ng-switch-when="Samples" href="#/samples"> <span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a>
+                  <small ng-switch-default> {{ item[key] }}</small>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </p>
+  </div>
+</div>
