@@ -7,6 +7,7 @@
   <navigation></navigation>
   <div class="jumbotron">
     <p class="lead">
+      {{eventlist}}
       <!-- TABLE -->
       <div class="table-responsive">
         <table class="table table-condensed table-hover compact-table">
@@ -19,9 +20,15 @@
             <tr ng-repeat="item in events" class="table-danger">
               <td ng-repeat="key in keys(item)| filter:'!$$'">
                 <div ng-switch on="key">
-                  <small ng-switch-when="Classification" class="bg-success"> {{ item[key] }}</small>
-                  <a ng-switch-when="Image" href="#/image"> <span class="glyphicon glyphicon-camera" aria-hidden="true"></span></a>
-                  <a ng-switch-when="Samples" href="#/samples"> <span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a>
+                  <!-- <small ng-switch-when="Classification"> {{ item[key] }}</small> -->
+                  <small ng-switch-when="Started"> {{ item[key] | date:'hh:mm:dd' }}</small>
+                  <small ng-switch-when="Ended"> {{ item[key] | date:'hh:mm:dd' }}</small>
+                  <small ng-switch-when="Duration"> {{ item[key] | date:'dd:ss' }}</small>
+                  <small ng-switch-when="Classification"> 
+                    <span ng-if="item[key]==1" class="label label-success">GOOD</span>
+                    <span ng-if="item[key]==2" class="label label-success">BAD</span>
+                  </small>
+                  <a ng-switch-when="Samples" ng-href="#/samples?id={{item[key]}}"> <span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a>
                   <small ng-switch-default> {{ item[key] }}</small>
                 </div>
               </td>

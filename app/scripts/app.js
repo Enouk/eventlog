@@ -13,7 +13,7 @@ angular
   .config(function($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
     $routeProvider
-      .when('/events', {
+      .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
@@ -30,6 +30,6 @@ angular
         controller: 'ImageCtrl'
       })
       .otherwise({
-        redirectTo: '/events'
+        redirectTo: '/'
       });
   });

@@ -6,16 +6,22 @@
   </div>
   <navigation></navigation>
   <div class="jumbotron">
+    <!-- {{datapoints}} -->
     <p class="lead">
       <!-- TABLE -->
-      <h5>Camera 1</h5>
-      <c3chart bindto-id="chart1">
-        <chart-grid-optional axis-id="y" grid-value="78" grid-text="Threshold"/>
-        <chart-grid-optional axis-id="x" grid-value="8" grid-text="Qualified"/>
+      <!-- <h5>Camera 1</h5> -->
+      <c3chart bindto-id="chart" chart-data="datapoints" chart-columns="datacolumns" chart-x="datax">
+      </c3chart>
+      <!--       <c3chart bindto-id="chart1">
+        <chart-grid-optional axis-id="y" grid-value="78" grid-text="Threshold" />
+        <chart-grid-optional axis-id="x" grid-value="8" grid-text="Qualified" />
+        <chart-column column-id="background" column-color="orange" column-values="samples.background" column-type="line" />
+        <chart-column column-id="good" column-color="darkgreen" column-values="samples.good" column-type="line" />
+        <chart-column column-id="bad" column-color="red" column-values="samples.bad" column-type="line" />
         <chart-column column-id="background" column-color="orange" column-values="90,0,0,0,0,0,0,0,0,0" column-type="line" />
         <chart-column column-id="good" column-color="darkgreen" column-values="0,89,87,86,75,70,0,0,0,90" column-type="line" />
         <chart-column column-id="bad" column-color="red" column-values="0,0,0,0,0,0,86,81,90,0" column-type="line" />
-      </c3chart>
+      </c3chart> -->
     </p>
   </div>
 </div>

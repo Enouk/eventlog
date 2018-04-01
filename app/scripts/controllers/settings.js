@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('eventsApp')
-  .controller('SettingsCtrl', function($scope, SettingsService) {
+  .controller('SettingsCtrl', function($scope, SettingsService, DocletService) {
 
     $scope.settings = {};
 
@@ -16,6 +16,17 @@ angular.module('eventsApp')
         }
       );
 
+    DocletService.list()
+      .then(
+        function(response) {
+          $scope.settings.applications = response.data;
+        },
+        function() {
+          $scope.info = undefined;
+          $scope.error = 'Failed to fetch apps';
+        }
+      );
+
     $scope.applicationChanged = function() {
       var value = {
         id: $scope.settings.application.id,
@@ -23,5 +34,5 @@ angular.module('eventsApp')
       };
       SettingsService.setValue('application', value);
     };
-    
+
   });
