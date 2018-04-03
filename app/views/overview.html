@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="alert alert-danger" ng-show="error!=undefined">
+    <button type="button" class="close" ng-click="error=undefined"><span>&times;</span>
+    </button>
+    {{error}}
+  </div>
+  <navigation></navigation>
+  <div class="jumbotron">
+    <!-- {{datapoints}} -->
+    <p class="lead">
+      <!-- TABLE -->
+      <!-- <h5>Camera 1</h5> -->
+      <c3chart bindto-id="chart" chart-data="datapoints" chart-columns="datacolumns" chart-x="datax">
+      </c3chart>
+    </p>
+  </div>
+</div>
