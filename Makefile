@@ -1,6 +1,6 @@
 .PHONY: distro
 
-name=events
+name=eventlog
 user=root
 node=digitalocean-prod-0
 
