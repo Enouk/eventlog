@@ -3,7 +3,6 @@
 angular.module('eventsApp')
   .controller('MainCtrl', function($scope, $location, Client, EventlogService, DocletService, SettingsService) {
 
-
     // Fetch and store the doclet
     if (Client.getDoclet() === undefined) {
 
@@ -34,6 +33,7 @@ angular.module('eventsApp')
                           var event = events[i];
                           $scope.events.push($scope.modelOf(event));
                         }
+                        Client.setEvents(events);
                       },
                       function() {
                         $scope.info = undefined;

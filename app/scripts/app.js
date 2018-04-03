@@ -29,6 +29,10 @@ angular
         templateUrl: 'views/image.html',
         controller: 'ImageCtrl'
       })
+      .when('/overview', {
+        templateUrl: 'views/overview.html',
+        controller: 'OverviewCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

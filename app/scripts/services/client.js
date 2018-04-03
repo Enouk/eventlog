@@ -33,4 +33,12 @@ angular.module('eventsApp')
       return this._settings;
     };
 
+    this.setEvents = function(events) {
+      this._events = events;
+    }
+
+    this.getEvents = function() {
+      this._events;
+    }
+
   });
