@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('eventsApp')
-  .controller('SamplesCtrl', function($scope, $location, $timeout, EventlogService) {
+  .controller('SamplesCtrl', function($scope, $location, $timeout, EventlogService, Client) {
 
     $scope.datapoints = [
     ];
@@ -14,9 +14,11 @@ angular.module('eventsApp')
 
     $scope.loadData = function() {
 
+      var settings = Client.getSettings();
+      var application = settings.application;
       var Id = $location.search().id;
 
-      EventlogService.details(Id)
+      EventlogService.details(application.id, Id)
         .then(
           function(response) {
             $scope.details = response.data;

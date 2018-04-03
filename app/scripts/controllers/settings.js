@@ -19,7 +19,7 @@ angular.module('eventsApp')
     DocletService.list()
       .then(
         function(response) {
-          $scope.settings.applications = response.data;
+          $scope.applications = response.data;
         },
         function() {
           $scope.info = undefined;

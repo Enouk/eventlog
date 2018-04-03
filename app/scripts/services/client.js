@@ -3,25 +3,34 @@
 angular.module('eventsApp')
   .service('Client', function() {
 
+    var _settings;
     var _sessionId;
     var _doclet;
 
     this.getSessionId = function() {
-      return _sessionId;
+      return this._sessionId;
     };
 
     this.setSessionId = function(sessionId) {
-      _sessionId = sessionId;
+      this._sessionId = sessionId;
     };
 
     this.setDoclet = function(doclet) {
       if (doclet !== undefined) {
-        _doclet = doclet;
+        this._doclet = doclet;
       }
     };
 
     this.getDoclet = function() {
-      return _doclet;
+      return this._doclet;
+    };
+
+    this.setSettings = function(settings) {
+      this._settings = settings;
+    };
+
+    this.getSettings = function() {
+      return this._settings;
     };
 
   });

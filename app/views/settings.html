@@ -5,7 +5,7 @@
       <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">Application</label>
         <div class="col-sm-10">
-          <select class="form-control" ng-change="applicationChanged()" ng-model="settings.application" ng-options="application as application.name for application in settings.applications track by application.id"></select>
+          <select class="form-control" ng-change="applicationChanged()" ng-model="settings.application" ng-options="application as application.name for application in applications track by application.id"></select>
           <small class="pull-left">The application to display the event for</small>
         </div>
       </div>

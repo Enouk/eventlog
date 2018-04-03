@@ -1,15 +1,13 @@
 'use strict';
 
 angular.module('eventsApp')
-  .service('EventlogService', function ($http) {
+  .service('EventlogService', function ($http, Client) {
 
-  	var docletId = 'defect';
-
-	this.list = function() {
+	this.list = function(docletId) {
       return $http.get('/api/doclet/' + docletId + '/bucket/events');
     };
 
-    this.details = function(Id) {
+    this.details = function(docletId, Id) {
 		return $http.get('/api/doclet/' + docletId + '/bucket/events-details/' + Id);
     };
 
