@@ -6,11 +6,13 @@
   </div>
   <navigation></navigation>
   <div class="jumbotron">
-    <!-- {{datapoints}} -->
+    <!-- {{details}} {{filter}} -->
     <p class="lead">
       <!-- TABLE -->
       <!-- <h5>Camera 1</h5> -->
       <c3chart bindto-id="chart" chart-data="datapoints" chart-columns="datacolumns" chart-x="datax">
+        <!--        <chart-grid-optional axis-id="y" grid-value="{{filter.requiredMean}}" grid-text="RequiredMean" />
+       <chart-grid-optional axis-id="y" grid-value="{{filter.requiredConfidenceForMean}}" grid-text="requiredConfidenceForMean" /> -->
       </c3chart>
       <!--       <c3chart bindto-id="chart1">
         <chart-grid-optional axis-id="y" grid-value="78" grid-text="Threshold" />
@@ -23,5 +25,17 @@
         <chart-column column-id="bad" column-color="red" column-values="0,0,0,0,0,0,86,81,90,0" column-type="line" />
       </c3chart> -->
     </p>
+    <dl class="dl-horizontal">
+      <dt>Classification Id</dt>
+      <dd>{{details.classification.id}}</dd>
+      <dt>Classification Frame</dt>
+      <dd>{{details.classification.frame}}</dd>
+      <dt>Frames in a row</dt>
+      <dd>{{details.filter.framesInARow}}</dd>
+      <dt>Required mean</dt>
+      <dd>{{details.filter.requiredMean * 100 | number:0}}</dd>
+      <dt>Confidence for mean</dt>
+      <dd>{{details.filter.requiredConfidenceForMean * 100 | number:0}}</dd>
+    </dl>
   </div>
 </div>

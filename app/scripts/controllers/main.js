@@ -24,6 +24,8 @@ angular.module('eventsApp')
                   var application = response.data.application;
 
                   // then all the events
+                  $scope.info = "Loading events";
+
                   EventlogService.list(application.id)
                     .then(
                       function(response) {
@@ -33,7 +35,8 @@ angular.module('eventsApp')
                           var event = events[i];
                           $scope.events.push($scope.modelOf(event));
                         }
-                        Client.setEvents(events);
+                        Client.setEvents($scope.events);
+                        $scope.info = undefined;
                       },
                       function() {
                         $scope.info = undefined;
@@ -57,22 +60,7 @@ angular.module('eventsApp')
       var settings = Client.getSettings();
       var application = settings.application;
 
-      // then all the events
-      EventlogService.list(application.id)
-        .then(
-          function(response) {
-            var events = $scope.values(response.data);
-            $scope.events = [];
-            for (var i = 0; i < events.length; i++) {
-              var event = events[i];
-              $scope.events.push($scope.modelOf(event));
-            }
-          },
-          function() {
-            $scope.info = undefined;
-            $scope.error = 'Failed to fetch events';
-          }
-        );
+      $scope.events = Client.getEvents();
     }
 
     $scope.keys = function(obj) {
@@ -88,11 +76,17 @@ angular.module('eventsApp')
         // Id: dto.id,
         Camera: dto.cameraid,
         Started: new Date(dto.started),
-        //Ended: new Date(dto.ended),
-        Duration: (dto.ended - dto.started)/1000,
+        Duration: dto.duration / 1000,
         Classification: dto.classid,
         Samples: dto.id
       }
+    }
+
+    $scope.deleteAll = function() {
+
+      var doclet = Client.getDoclet();
+
+      EventlogService.deleteAll(doclet.id);
     }
 
   });
