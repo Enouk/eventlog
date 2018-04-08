@@ -17,13 +17,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="item in events">
+            <tr ng-repeat="item in events | orderBy: '-Started'" >
               <td> <small>{{$index}}</small></td>
               <td ng-repeat="key in keys(item)| filter:'!$$'">
                 <div ng-switch on="key">
                   <!-- <small ng-switch-when="Classification"> {{ item[key] }}</small> -->
-                  <small ng-switch-when="Started"> {{ item[key] | date:'MMMM-dd hh:mm:dd' }}</small>
-                  <small ng-switch-when="Ended"> {{ item[key] | date:'hh:mm:dd' }}</small>
+                  <small ng-switch-when="Started"> {{ item[key] | date:'medium' }}</small>
+                  <small ng-switch-when="Ended"> {{ item[key] | date:'medium' }}</small>
                   <small ng-switch-when="Duration"> {{ item[key] }} sec</small>
                   <small ng-switch-when="Classification">
                     <span ng-if="item[key]==1" class="label label-success">GOOD</span>
