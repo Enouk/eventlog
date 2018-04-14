@@ -8,8 +8,8 @@
   <div class="jumbotron">
     <p class="lead">
       <!-- No Events -->
-      <div ng-if="events.length == 0"=>
-          <h5>No events available</h5>
+      <div ng-if="events.length == 0">
+        <h5>No events available</h5>
       </div>
       <!-- TABLE -->
       <div ng-if="events.length > 0" class="table-responsive">
@@ -21,7 +21,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="item in events | orderBy: '-Started'" >
+            <tr ng-repeat="item in events | orderBy: '-Started'">
               <td> <small>{{$index}}</small></td>
               <td ng-repeat="key in keys(item)| filter:'!$$'">
                 <div ng-switch on="key">
