@@ -78,7 +78,8 @@ angular.module('eventsApp')
         Started: new Date(dto.started),
         Duration: dto.duration / 1000,
         Classification: dto.classid,
-        Samples: dto.id
+        Samples: dto.id,
+        Image: dto.classimage
       }
     }
 
@@ -87,6 +88,14 @@ angular.module('eventsApp')
       var doclet = Client.getDoclet();
 
       EventlogService.deleteAll(doclet.id);
+    }
+
+    $scope.computeDownloadUrl = function(image) {
+
+      var doclet = Client.getDoclet();
+      var settings = Client.getSettings();
+
+      return "/api/account/" + doclet.accountId + "/file/skyraid/" + settings.application.id + "/images/" + image;
     }
 
   });

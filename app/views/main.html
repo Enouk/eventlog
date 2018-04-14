@@ -7,8 +7,12 @@
   <navigation></navigation>
   <div class="jumbotron">
     <p class="lead">
+      <!-- No Events -->
+      <div ng-if="events.length == 0"=>
+          <h5>No events available</h5>
+      </div>
       <!-- TABLE -->
-      <div class="table-responsive">
+      <div ng-if="events.length > 0" class="table-responsive">
         <table class="table table-condensed table-hover compact-table">
           <thead>
             <tr>
@@ -30,6 +34,9 @@
                     <span ng-if="item[key]==2" class="label label-danger">BAD</span>
                   </small>
                   <a ng-switch-when="Samples" ng-href="#/samples?id={{item[key]}}"> <span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a>
+                  <small ng-switch-when="Image">
+                    <a ng-href="{{computeDownloadUrl(item[key])}}"><span ng-if="item[key].length > 0" class="glyphicon glyphicon-camera" aria-hidden="true"></span></a>
+                  </small>
                   <small ng-switch-default> {{ item[key] }}</small>
                 </div>
               </td>
